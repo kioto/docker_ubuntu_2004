@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+   ubuntu:
+    image: ubuntu:20.04
+    restart: always
+    container_name: "ubuntu_2004"
+    build: .
+    tty: true
+    environment:
+      - PYTHON_PKG=python3.8
+      - USER=kioto
+      - PASSWORD=password
+    volumes:
+      - ./share:/share
