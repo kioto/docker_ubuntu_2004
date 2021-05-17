@@ -1,10 +1,13 @@
 FROM ubuntu:20.04
 
-
 ENV PYTHON_PKG=python3.8
-ENV USER=kioto
+ENV USER=developer
 ENV PASSWORD=password
+ENV GIT_EMAIL=<mailaddress>
+ENV GIT_NAME="my name"
+ENV HOME=/home/${USER}
 
+USER root
 
 # update packages
 RUN set -x && \
@@ -36,11 +39,10 @@ USER ${USER}
 WORKDIR ${HOME}
 
 RUN set -x && \
-	git config --global user.email "kioto.hirahara@gmail.com" && \
-	git config --global user.name "Kioto Hirahara" && \
+	git config --global user.email ${GIT_EMAIL} && \
+	git config --global user.name "${GIT_NAME}" && \
 	git config --global log.decorate auto && \
 	git config --global credential.helper store
 
-USER root
-EXPOSE 22
-# CMD ["/usr/sbin/sshd", "-D"]
+RUN set -x && \
+        echo "set -g prefix C-t\nunbind C-b\n" > /home/${USER}/.tmux.conf
