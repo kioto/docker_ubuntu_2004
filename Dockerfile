@@ -1,10 +1,10 @@
 FROM ubuntu:20.04
 
 ENV PYTHON_PKG=python3.8
-ENV USER=developer
+ENV USER=kioto
 ENV PASSWORD=password
-ENV GIT_EMAIL=<mailaddress>
-ENV GIT_NAME="my name"
+ENV GIT_EMAIL=kioto.hirahara@gmail.com
+ENV GIT_NAME="Kioto Hirahara"
 ENV HOME=/home/${USER}
 
 USER root
